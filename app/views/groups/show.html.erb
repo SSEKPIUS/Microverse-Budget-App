@@ -1,5 +1,5 @@
 <nav class="group-header">
-  <%= link_to "BACK", groups_path, class: "link-header" %>
+  <%= link_to "<", groups_path, class: "link-header" %>
 </nav>
 <%= render @group %>
 <div class="payments-index">
@@ -9,7 +9,7 @@
         <div class="payments-item">
           <div class="payment-info">
             <p><%= payment.name %></p>
-            <div class="group-date" style="color:blue;"><%= payment.created_at.strftime('%B %d, %Y') %></div>
+            <div class="group-date"><%= payment.created_at.strftime('%B %d, %Y') %></div>
           </div>
           <p>$<%= payment.amount %></p>
         </div>
