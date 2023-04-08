@@ -4229,3 +4229,67 @@ Processing by GroupsController#show as TURBO_STREAM
 Completed 200 OK in 46ms (Views: 23.4ms | ActiveRecord: 2.8ms | Allocations: 10731)
 
 
+Started GET "/groups" for ::1 at 2023-04-08 15:10:38 +0300
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mGroupPayment Load (0.9ms)[0m  [1m[34mSELECT "group_payments".* FROM "group_payments" WHERE "group_payments"."group_id" IN ($1, $2, $3, $4)[0m  [["group_id", 1], ["group_id", 2], ["group_id", 3], ["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.9ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.6ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.7ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.5ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/groups/index.html.erb:7
+  [1m[36mPayment Sum (0.5ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (0.6ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (0.8ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (0.6ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  Rendered groups/index.html.erb within layouts/application (Duration: 27.2ms | Allocations: 9188)
+  Rendered layout layouts/application.html.erb (Duration: 104.0ms | Allocations: 29839)
+Completed 200 OK in 198ms (Views: 102.9ms | ActiveRecord: 14.6ms | Allocations: 55372)
+
+
+Started GET "/groups" for ::1 at 2023-04-08 15:10:39 +0300
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mGroupPayment Load (0.9ms)[0m  [1m[34mSELECT "group_payments".* FROM "group_payments" WHERE "group_payments"."group_id" IN ($1, $2, $3, $4)[0m  [["group_id", 1], ["group_id", 2], ["group_id", 3], ["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (1.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.9ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.7ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/groups/index.html.erb:7
+  [1m[36mPayment Sum (0.8ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (3.0ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (5.1ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 3]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (11.6ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 4]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  Rendered groups/index.html.erb within layouts/application (Duration: 138.7ms | Allocations: 6662)
+  Rendered layout layouts/application.html.erb (Duration: 158.9ms | Allocations: 10038)
+Completed 200 OK in 199ms (Views: 138.8ms | ActiveRecord: 26.8ms | Allocations: 17447)
+
+
