@@ -1,12 +1,24 @@
-<div class="group-index">
-  <div class="group-header">
-    <p class="header-title">SIGN IN</p>
-  </div>
-</div>
 <div class="log-container">
   <div class="log-in">
-    <h2>Log in</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="group-index">
+        <div class="group-header">
+          <nav class="group-navbar">
+            <%- if controller_name != 'sessions' %>
+            <a href="<%= new_session_path(resource_name) %>">
+              <img class="burger-image"
+                alt="burger menu icon"
+                src="<%= asset_path('left-arrow-icon.svg') %>"
+                onclick="showMenu()">
+            </a>
+            <%end%>
+          </nav>
+          <p class="header-title">LOGIN</p>
+          <div class="next"><%= f.submit "Log In", class: "" %></div>
+        </div>
+      </div>
+
       <div class="field">
         <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "input", placeholder: "Enter your email" %>
       </div>
@@ -19,8 +31,7 @@
           <%= f.label :remember_me %>
         </div>
       <% end %>
-      <%= f.submit "Log in", class: "btn-submit" %>
-    </div>
-  <% end %>
-</div>
+      <%= render "devise/shared/error_messages", resource: resource %> 
+    <% end %>
+  </div>
 </div>

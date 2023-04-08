@@ -1,22 +1,45 @@
-<div class="group-index">
-  <div class="group-header">
-    <nav class="group-navbar">
-    <%- if controller_name != 'sessions' %>
-      <a href="<%= new_session_path(resource_name) %>">
-    
-        <img class="burger-image"
-          alt="burger menu icon"
-          src="<%= asset_path('left-arrow-icon.svg') %>"
-          onclick="showMenu()">
-      </a>
-      <%end%>
-    </nav>
-    <p class="header-title">REGISTER</p>
+  <div class="log-container">
+    <div class="sign-up">
+      <%= form_with model: @user, url: users_path do |f| %>
+
+        <div class="group-index">
+          <div class="group-header">
+            <nav class="group-navbar">
+              <%- if controller_name != 'sessions' %>
+              <a href="<%= new_session_path(resource_name) %>">
+                <img class="burger-image"
+                  alt="burger menu icon"
+                  src="<%= asset_path('left-arrow-icon.svg') %>"
+                  onclick="showMenu()">
+              </a>
+              <%end%>
+            </nav>
+            <p class="header-title">REGISTER</p>
+            <div class="next"><%= f.submit "Next", class: "" %></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:
+          "input", placeholder: "Enter your name" %>
+        </div>
+
+        <div class="field">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:
+          "input", placeholder: "Enter your email" %>
+        </div>
+
+        <div class="field">
+          <% if @minimum_password_length %> <% end %> 
+          <%= f.password_field :password, autocomplete: "new-password", class: "input", placeholder:
+          "Enter your password (6 characters minimum)" %>
+        </div>
+
+        <div class="field">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password",
+          class: "input", placeholder: "Repeat your password" %>
+        </div>
+        <%= render "devise/shared/error_messages", resource: resource %> 
+      <% end %>
+    </div>
   </div>
-</div>
-
-
-<%= render "form", user: @user %>
-
-
-</div>

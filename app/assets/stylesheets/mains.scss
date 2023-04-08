@@ -48,18 +48,17 @@ h2 {
   text-align: center;
   border-radius: 5px;
   padding: 10px;
-  background-color: blue;
+  background-color: #3778c2;
 }
 
 .splash-btn-signup {
   text-decoration: none;
   font-size: 18px;
-  color: white;
+  color: #434b64;
   width: 90%;
   text-align: center;
   border-radius: 5px;
   padding: 10px;
-  background-color: gray;
 }
 
 .group {
@@ -164,7 +163,9 @@ h2 {
 
 .burger-image {
   height: 32px;
+  width: 25px;
   z-index: 999;
+  margin-left: 5px;
   position: relative;
   cursor: pointer;
 }
@@ -178,6 +179,7 @@ h2 {
   justify-content: center;
   width: 100%;
   font-size: 24px;
+  color: white;
 }
 
 .group-link {
@@ -394,4 +396,14 @@ h2 {
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #434b54;
+}
+
+#error_explanation,
+.alert {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#error_explanation h2 {
+  font-size: 1em;
 }
