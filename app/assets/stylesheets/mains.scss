@@ -283,6 +283,25 @@ h2 {
   padding: 0 1em;
 }
 
+.payment-row p {
+  color: #434b54;
+  height: 32px;
+  margin: 0.5em;
+}
+
+.button_to p,
+.edit-img p {
+  font-size: x-small;
+  margin: 0;
+  font-weight: 500;
+  color: #434b54;
+}
+
+.payments-item > p {
+  color: black;
+  font-weight: 900;
+}
+
 .total-spending p:nth-child(2) {
   font-weight: 900;
 }
@@ -323,12 +342,6 @@ h2 {
   box-shadow: 5px 0 15px gainsboro;
   height: 100%;
   padding-left: 1em;
-}
-
-.payment-row p {
-  color: #434b54;
-  height: 32px;
-  margin: 0.5em;
 }
 
 .payment-row a {
@@ -374,14 +387,6 @@ h2 {
   align-items: center;
 }
 
-.button_to p,
-.edit-img p {
-  font-size: x-small;
-  margin: 0;
-  font-weight: 500;
-  color: #434b54;
-}
-
 .avatar {
   display: flex;
   flex-direction: column;
@@ -417,11 +422,6 @@ h2 {
 .icon_link {
   border: none !important;
   background: transparent !important;
-}
-
-.payments-item > p {
-  color: black;
-  font-weight: 900;
 }
 
 .payment-info * {
