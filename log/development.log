@@ -691,3 +691,82 @@ Processing by GroupsController#index as HTML
 Completed 200 OK in 72ms (Views: 29.1ms | ActiveRecord: 6.9ms | Allocations: 14114)
 
 
+Started GET "/users/1/edit" for ::1 at 2023-04-08 11:43:21 +0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:65:in `set_user'
+  Rendering layout layouts/application.html.erb
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/_form.html.erb (Duration: 51.5ms | Allocations: 6306)
+  Rendered users/edit.html.erb within layouts/application (Duration: 53.5ms | Allocations: 6774)
+  Rendered layout layouts/application.html.erb (Duration: 122.8ms | Allocations: 46027)
+Completed 200 OK in 165ms (Views: 125.4ms | ActiveRecord: 6.4ms | Allocations: 60869)
+
+
+Started GET "/groups" for ::1 at 2023-04-08 11:43:35 +0300
+Processing by GroupsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mGroup Load (0.5ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mGroupPayment Load (0.6ms)[0m  [1m[34mSELECT "group_payments".* FROM "group_payments" WHERE "group_payments"."group_id" IN ($1, $2)[0m  [["group_id", 1], ["group_id", 2]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (1.3ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.5ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.7ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/groups/index.html.erb:7
+  [1m[36mPayment Sum (0.5ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (0.6ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  Rendered groups/index.html.erb within layouts/application (Duration: 31.1ms | Allocations: 9018)
+  Rendered layout layouts/application.html.erb (Duration: 35.9ms | Allocations: 12451)
+Completed 200 OK in 128ms (Views: 34.7ms | ActiveRecord: 18.3ms | Allocations: 37951)
+
+
+Started GET "/" for ::1 at 2023-04-08 11:43:41 +0300
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Processing by GroupsController#index as HTML
+  [1m[36mGroup Load (0.6ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mGroupPayment Load (0.9ms)[0m  [1m[34mSELECT "group_payments".* FROM "group_payments" WHERE "group_payments"."group_id" IN ($1, $2)[0m  [["group_id", 1], ["group_id", 2]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.9ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  [1m[36mPayment Load (0.7ms)[0m  [1m[34mSELECT "payments".* FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/controllers/groups_controller.rb:8:in `flat_map'
+  Rendering layout layouts/application.html.erb
+  Rendering groups/index.html.erb within layouts/application
+  [1m[36mActiveStorage::Attachment Load (0.6ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = $1 AND "active_storage_attachments"."record_type" = $2 AND "active_storage_attachments"."name" = $3 LIMIT $4[0m  [["record_id", 1], ["record_type", "User"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/views/groups/index.html.erb:7
+  [1m[36mPayment Sum (1.1ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 1]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  [1m[36mPayment Sum (1.0ms)[0m  [1m[34mSELECT SUM("payments"."amount") FROM "payments" INNER JOIN "group_payments" ON "payments"."id" = "group_payments"."payment_id" WHERE "group_payments"."group_id" = $1[0m  [["group_id", 2]]
+  ↳ app/models/group.rb:9:in `total_amount'
+  Rendered groups/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 5135)
+  Rendered layout layouts/application.html.erb (Duration: 20.2ms | Allocations: 8530)
+Completed 200 OK in 42ms (Views: 18.3ms | ActiveRecord: 5.9ms | Allocations: 12749)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2023-04-08 11:43:46 +0300
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 20ms (ActiveRecord: 0.9ms | Allocations: 3321)
+
+
+Started GET "/" for ::1 at 2023-04-08 11:43:46 +0300
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 281)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 4085)
+Completed 200 OK in 14ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 4852)
+
+
