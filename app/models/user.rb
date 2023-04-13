@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true
   validates :name, presence: true
+  validates :encrypted_password, presence: true
 
   def admin?
     role == 'admin'
