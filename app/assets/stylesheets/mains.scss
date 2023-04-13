@@ -245,20 +245,29 @@ h2 {
 }
 
 .btn-bottom {
-  text-decoration: none;
-  font-size: 24px;
-  color: white;
   width: 100%;
   text-align: center;
-  padding: 10px;
   background-color: #5fb523;
   border: none;
   position: fixed;
   bottom: 0;
   left: 0;
+}
+
+.btn-bottom form,
+.btn-bottom a {
+  display: block;
+  margin: 0.8em;
+  border: 1px solid white;
+  text-decoration: none;
+  font-size: 24px;
+  color: white;
+  text-align: center;
+  padding: 10px;
   cursor: pointer;
 }
 
+.btn-bottom button,
 .btn-bottom input {
   background-color: #5fb523;
   color: white;

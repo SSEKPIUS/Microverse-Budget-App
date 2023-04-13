@@ -17,6 +17,8 @@
   </div>
 </div>
 <div>
-  <%= button_to "ADD TRANSACTION", new_group_payment_path(group_id: @group.id), method:
-  :get, class: "btn-bottom" %>
+  <div class="btn-bottom">
+    <%= button_to "ADD TRANSACTION", new_group_payment_path(group_id: @group.id), method:
+  :get %>
+  </div>
 </div>
