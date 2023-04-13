@@ -1,0 +1,36 @@
+<div class="log-container">
+  <div class="log-in">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div class="group-index">
+        <div class="group-header">
+          <nav class="group-navbar">
+            <a href="<%= new_session_path(resource_name) %>">
+              <img class="burger-image"
+                style=" margin-right: 4em;"
+                alt="burger menu icon"
+                src="<%= asset_path('left-arrow-icon.svg') %>"
+                onclick="showMenu()">
+            </a>
+          </nav>
+          <p class="header-title">LOGIN</p>
+          <div class="next"><%= f.submit "Log In", class: "" %></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "input", placeholder: "Enter your email" %>
+      </div>
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "current-password", required: true, class: "input", placeholder: "Enter your password" %>
+      </div>
+      <% if devise_mapping.rememberable? %>
+        <div class="remember_me">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+      <%= render "devise/shared/error_messages", resource: resource %> 
+    <% end %>
+  </div>
+</div>
